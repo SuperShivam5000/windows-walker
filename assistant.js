@@ -1,6 +1,16 @@
 const { exec } = require('child_process');
 server_url = 'https://windows-walker-server.onrender.com';
 
+async function pingServer() {
+  try {
+    const res = await fetch(server_url);
+    const text = await res.text();
+    console.log('Response from server:', text);
+  } catch (err) {
+    console.error('Could not reach server:', err.message);
+  }
+}
+
 async function getPowerShellCommand(userInput) {
   const response = await fetch(server_url+'/generate', {
     method: 'POST',
@@ -29,4 +39,4 @@ function runCommand(cmd, callback) {
   });
 }
 
-module.exports = { getPowerShellCommand, runCommand };
+module.exports = { getPowerShellCommand, runCommand, pingServer };

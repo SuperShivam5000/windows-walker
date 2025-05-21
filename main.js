@@ -18,6 +18,7 @@ function createWindow() {
 
 app.whenReady().then(() => {
   createWindow();
+  assistant.pingServer();
 });
 
 ipcMain.handle('send-command', async (event, userInput) => {
