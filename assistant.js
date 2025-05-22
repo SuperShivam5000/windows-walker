@@ -1,23 +1,41 @@
 const { exec } = require('child_process');
-server_url = 'https://windows-walker-server.onrender.com';
 
-async function pingServer() {
-  try {
-    const res = await fetch(server_url);
-    const text = await res.text();
-    console.log('Response from server:', text);
-  } catch (err) {
-    console.error('Could not reach server:', err.message);
-  }
-}
+pollinations_url = 'https://text.pollinations.ai/openai';
 
-async function getPowerShellCommand(userInput) {
-  const response = await fetch(server_url+'/generate', {
+const systemPrompt = `
+You are a Windows assistant. Convert user requests into safe PowerShell commands.
+Only return the PowerShell code. Do not include explanations, markdown formatting, or comments.
+
+You are allowed to respond with intermediate PowerShell commands to gather necessary system context before completing the user's request. Use multi-turn logic if needed.
+
+Examples:
+User: Open Chrome
+Response: Start-Process "chrome.exe"
+
+User: Turn off Bluetooth  
+Response: Get-PnpDevice -Class Bluetooth
+
+(Then, once devices are known, follow up with a second command to disable the target device.)
+
+User: Close a running app  
+Response: Get-Process
+
+(Then follow up with: Stop-Process -Name "<name>" if applicable.)
+
+Always respond with PowerShell commands. No natural language, no explanations.
+Return -1 if the task is done.
+`;
+
+async function getPowerShellCommand(messages) {
+  const response = await fetch(pollinations_url, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ input: userInput }),
+    body: JSON.stringify({
+      "model": "openai-large",
+      "messages": messages
+    }),
   });
 
   if (!response.ok) {
@@ -25,8 +43,8 @@ async function getPowerShellCommand(userInput) {
     throw new Error(`Server error: ${response.status} - ${errorText}`);
   }
 
-  const result = await response.text();
-  return result;
+  const result = await response.json();
+  return result.choices[0].message.content;
 }
 
 function runCommand(cmd, callback) {
@@ -39,4 +57,4 @@ function runCommand(cmd, callback) {
   });
 }
 
-module.exports = { getPowerShellCommand, runCommand, pingServer };
+module.exports = { systemPrompt, getPowerShellCommand, runCommand };

@@ -15,13 +15,17 @@ window.addEventListener('DOMContentLoaded', () => {
     const outputEl = document.getElementById("output");
     const psSection = document.getElementById("powershell-section");
 
+    psSection.style.display = "block";
+
     if (result.error) {
       outputEl.textContent = `❗ Error: ${result.error}`;
     } else {
-      outputEl.textContent = `💡 Command: ${result.command}\n\n${result.output}`;
+      const log = result.commandLog.map(entry =>
+        `💡 Command: ${entry.command}\n${entry.output}`
+      ).join("\n\n");
+      outputEl.textContent = log;
     }
 
-    psSection.style.display = "block";
     queryInput.value = "";
   };
 });

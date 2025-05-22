@@ -18,17 +18,51 @@ function createWindow() {
 
 app.whenReady().then(() => {
   createWindow();
-  assistant.pingServer();
 });
 
 ipcMain.handle('send-command', async (event, userInput) => {
   try {
-    const cmd = await assistant.getPowerShellCommand(userInput);
-    return new Promise(resolve => {
-      assistant.runCommand(cmd, output => {
-        resolve({ command: cmd, output });
+    messages = [
+      {
+        role: "system",
+        content: assistant.systemPrompt
+      },
+      {
+        role: "user",
+        content: userInput
+      }
+    ];
+
+    const commandLog = [];
+
+    let done = false;
+    let cmd = "";
+    while (!done) {
+
+      cmd = await assistant.getPowerShellCommand(messages);
+
+      if (cmd === "-1") {
+        done = true;
+        break;
+      }
+
+      messages.push({ role: "assistant", content: cmd });
+
+      const output = await new Promise(resolve => {
+        assistant.runCommand(cmd, result => {
+          resolve(result);
+        });
       });
-    });
+
+      messages.push({ role: "system", content: output });
+      commandLog.push({ command: cmd, output });
+      if (output.includes("Done")) {
+        done = true;
+        break;
+      }
+    }
+    return { commandLog };
+
   } catch (err) {
     return { error: err.message };
   }
