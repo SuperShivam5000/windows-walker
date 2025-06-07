@@ -41,7 +41,7 @@ ipcMain.handle('send-command', async (event, userInput) => {
 
       cmd = await assistant.getPowerShellCommand(messages);
 
-      if (cmd === "-1") {
+      if (cmd === "6969") {
         done = true;
         break;
       }
@@ -56,7 +56,8 @@ ipcMain.handle('send-command', async (event, userInput) => {
 
       messages.push({ role: "system", content: output });
       commandLog.push({ command: cmd, output });
-      if (output.includes("Done")) {
+
+      if (cmd.includes("6969")) {
         done = true;
         break;
       }

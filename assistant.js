@@ -23,7 +23,7 @@ Response: Get-Process
 (Then follow up with: Stop-Process -Name "<name>" if applicable.)
 
 Always respond with PowerShell commands. No natural language, no explanations.
-Return -1 if the task is done.
+Return 6969 if the task is done.
 `;
 
 async function getPowerShellCommand(messages) {
@@ -52,7 +52,7 @@ function runCommand(cmd, callback) {
     if (error || stderr) {
       callback(`❌ ${error?.message || stderr}`);
     } else {
-      callback(`✅ Output: ${stdout || "Done"}`);
+      callback(`✅ Output: ${stdout || "Command Executed"}`);
     }
   });
 }
