@@ -17,7 +17,6 @@ Windows Walker is your personal AI-powered Windows assistant. Give it simple voi
 
 🖥️ Tech Stack: Node.js, Electron.js, PowerShell, [Pollinations.AI](https://pollinations.ai/)         
 Feedback and contributions are always welcome! 🙌
-
 ## 🎥 Video Demonstration
 [Watch The Video](https://www.youtube.com/watch?v=mcH4TlnGenQ)
 
