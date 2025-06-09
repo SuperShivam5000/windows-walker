@@ -20,3 +20,11 @@ Feedback and contributions are always welcome! 🙌
 
 ## 🎥 Video Demonstration
 [Watch The Video](https://www.youtube.com/watch?v=mcH4TlnGenQ)
+
+
+This project is licensed under a Non-Commercial MIT License.          
+
+You are free to use, copy, modify, and distribute this software for non-commercial purposes only.         
+Commercial use is strictly prohibited without prior written permission from the author.         
+
+See the LICENSE file for full details.          
