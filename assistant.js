@@ -2,31 +2,7 @@ const { exec } = require('child_process');
 
 pollinations_url = 'https://text.pollinations.ai/openai';
 
-const systemPrompt = `
-You are a Windows assistant. Convert user requests into safe PowerShell commands.
-Only return the PowerShell code. Do not include explanations, markdown formatting, or comments.
-
-You are allowed to respond with intermediate PowerShell commands to gather necessary system context before completing the user's request. Use multi-turn logic if needed.
-
-Examples:
-User: Open Chrome
-Response: Start-Process "chrome.exe"
-
-User: Turn off Bluetooth  
-Response: Get-PnpDevice -Class Bluetooth
-
-(Then, once devices are known, follow up with a second command to disable the target device.)
-
-User: Close a running app  
-Response: Get-Process
-
-(Then follow up with: Stop-Process -Name "<name>" if applicable.)
-
-Always respond with PowerShell commands. No natural language, no explanations.
-Return 6969 if the task is done.
-`;
-
-async function getPowerShellCommand(messages) {
+async function getChatCompletion(messages) {
   const response = await fetch(pollinations_url, {
     method: 'POST',
     headers: {
@@ -57,4 +33,4 @@ function runCommand(cmd, callback) {
   });
 }
 
-module.exports = { systemPrompt, getPowerShellCommand, runCommand };
+module.exports = { getChatCompletion, runCommand };

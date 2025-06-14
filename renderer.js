@@ -29,7 +29,6 @@ window.addEventListener('DOMContentLoaded', () => {
     queryInput.value = "";
   };
 
-  // Add delete memories button handler
   const delBtn = document.getElementById("delete-memories");
   delBtn.addEventListener("click", async () => {
     await ipcRenderer.invoke('delete-memories');
