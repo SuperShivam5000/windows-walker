@@ -20,25 +20,25 @@ Feedback and contributions are always welcome! 🙌
 
 ## 🆕 New Features
 🔁 1) Multi-turn Conversations
-Windows Walker now supports multi-turn interactions — meaning it can reason through a sequence of commands to accomplish complex tasks.
-Example:
-User: Open Oblivion from start menu
-Walker:
-Command: Get-StartApps  
--Reads list of installed apps and filters for “Oblivion”  
-Command: Start-Process "shell:AppsFolder\BethesdaSoftworks.ProjectAltar_3275kfvn8vcwc!AppUEGameShipping"  
--Launches The Elder Scrolls IV: Oblivion Remastered
+Windows Walker now supports multi-turn interactions — meaning it can reason through a sequence of commands to accomplish complex tasks.           
+Example:         
+User: Open Oblivion from start menu          
+Walker:          
+Command: Get-StartApps          
+-Reads list of installed apps and filters for “Oblivion”          
+Command: Start-Process "shell:AppsFolder\BethesdaSoftworks.ProjectAltar_3275kfvn8vcwc!AppUEGameShipping"          
+-Launches The Elder Scrolls IV: Oblivion Remastered        
 
-🧠 2) Memory (Stateful Assistant)
-Walker now remembers useful context like AppIDs, file paths, URIs, process names, and more — for faster and more intelligent responses in the future.
-Example:
-After the Oblivion example above, Walker stores:
+🧠 2) Memory (Stateful Assistant)          
+Walker now remembers useful context like AppIDs, file paths, URIs, process names, and more — for faster and more intelligent responses in the future.            
+Example:            
+After the Oblivion example above, Walker stores:        
 
-“The AppID for The Elder Scrolls IV: Oblivion Remastered is BethesdaSoftworks.ProjectAltar_3275kfvn8vcwc!AppUEGameShipping”
-So next time you say "Open Oblivion", it just runs the correct command immediately.
+“The AppID for The Elder Scrolls IV: Oblivion Remastered is BethesdaSoftworks.ProjectAltar_3275kfvn8vcwc!AppUEGameShipping”            
+So next time you say "Open Oblivion", it just runs the correct command immediately.              
 
-You can also teach Walker custom facts like:
-“Please remember that AdiAI is present on my desktop”
+You can also teach Walker custom facts like:              
+“Please remember that AdiAI is present on my desktop”                
 
 ## 🎥 Video Demonstration
 [Watch The Video](https://www.youtube.com/watch?v=mcH4TlnGenQ)
