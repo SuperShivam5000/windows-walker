@@ -56,7 +56,6 @@ ipcMain.handle('send-command', async (event, userInput) => {
 
       if (cmd === "6969") {
         done = true;
-        break;
       }
 
       messages.push({ role: "assistant", content: cmd });
