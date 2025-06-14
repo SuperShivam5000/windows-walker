@@ -1,7 +1,18 @@
 const fs = require('fs');
 const path = require('path');
+let MEM_FILE;
 
-const MEM_FILE = path.join(__dirname, 'memories.json');
+try {
+  const electron = require('electron');
+  const app = electron.app || (electron.remote && electron.remote.app);
+  if (app) {
+    MEM_FILE = path.join(app.getPath('userData'), 'memories.json');
+  } else {
+    MEM_FILE = path.join(__dirname, 'memories.json');
+  }
+} catch {
+  MEM_FILE = path.join(__dirname, 'memories.json');
+}
 
 function loadMemories() {
   if (!fs.existsSync(MEM_FILE)) return [];
