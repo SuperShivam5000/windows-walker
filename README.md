@@ -15,6 +15,8 @@ Windows Walker is your personal AI-powered Windows assistant. Give it simple voi
 "Turn on dark mode"        
 ...and it just does it. No scripting, no right-clicks, no settings-hunting.        
 
+🖥️ Tech Stack: Node.js, Electron.js, PowerShell, [Pollinations.AI](https://pollinations.ai/)         
+Feedback and contributions are always welcome! 🙌
 
 ## 🆕 New Features
 🔁 1) Multi-turn Conversations
@@ -23,9 +25,9 @@ Example:
 User: Open Oblivion from start menu
 Walker:
 Command: Get-StartApps  
-# Reads list of installed apps and filters for “Oblivion”  
+-Reads list of installed apps and filters for “Oblivion”  
 Command: Start-Process "shell:AppsFolder\BethesdaSoftworks.ProjectAltar_3275kfvn8vcwc!AppUEGameShipping"  
-# Launches The Elder Scrolls IV: Oblivion Remastered
+-Launches The Elder Scrolls IV: Oblivion Remastered
 
 🧠 2) Memory (Stateful Assistant)
 Walker now remembers useful context like AppIDs, file paths, URIs, process names, and more — for faster and more intelligent responses in the future.
@@ -38,10 +40,6 @@ So next time you say "Open Oblivion", it just runs the correct command immediate
 You can also teach Walker custom facts like:
 “Please remember that AdiAI is present on my desktop”
 
-
-
-🖥️ Tech Stack: Node.js, Electron.js, PowerShell, [Pollinations.AI](https://pollinations.ai/)         
-Feedback and contributions are always welcome! 🙌
 ## 🎥 Video Demonstration
 [Watch The Video](https://www.youtube.com/watch?v=mcH4TlnGenQ)
 
