@@ -77,6 +77,32 @@
       justify-content: center;
       gap: 10px;
     }
+
+    #delete-memories {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background-color: #c0392b;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      z-index: 1000;
+      margin: 0;
+      padding: 0;
+      transition: background 0.2s;
+    }
+
+    #delete-memories:hover {
+      background-color: #a93226;
+    }
   </style>
 </head>
 
@@ -87,6 +113,7 @@
   </h2>
   <input id="query" placeholder="What do you want to do?" />
   <button onclick="sendCommand()">Run</button>
+  <button id="delete-memories">🗑️</button>
   <div id="powershell-section">
     <h3>🔧 Logs</h3>
     <pre id="output"></pre>

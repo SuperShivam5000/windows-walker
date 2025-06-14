@@ -28,4 +28,14 @@ window.addEventListener('DOMContentLoaded', () => {
 
     queryInput.value = "";
   };
+
+  // Add delete memories button handler
+  const delBtn = document.getElementById("delete-memories");
+  delBtn.addEventListener("click", async () => {
+    await ipcRenderer.invoke('delete-memories');
+    const outputEl = document.getElementById("output");
+    const psSection = document.getElementById("powershell-section");
+    psSection.style.display = "block";
+    outputEl.textContent = '🗑️ All memories deleted.';
+  });
 });
