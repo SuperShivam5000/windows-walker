@@ -23,6 +23,7 @@ Feedback and contributions are always welcome! 🙌
 Windows Walker now supports multi-turn interactions — meaning it can reason through a sequence of commands to accomplish complex tasks.           
 Example:         
 User: Open Oblivion from start menu          
+
 Walker:          
 Command: Get-StartApps          
 -Reads list of installed apps and filters for “Oblivion”          
@@ -40,7 +41,7 @@ So next time you say "Open Oblivion", it just runs the correct command immediate
 You can also teach Walker custom facts like:              
 “Please remember that AdiAI is present on my desktop”                
 
-## 🎥 Video Demonstration
+## 🎥 Video Demonstrations
 [Watch The Video](https://www.youtube.com/watch?v=mcH4TlnGenQ)          
 [Multi-Turn Conversation + Memory Demonstration](https://www.youtube.com/watch?v=Bih6vcDwiz8)
 
