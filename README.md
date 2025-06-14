@@ -19,7 +19,7 @@ Windows Walker is your personal AI-powered Windows assistant. Give it simple voi
 Feedback and contributions are always welcome! 🙌
 
 ## 🆕 New Features
-🔁 1) Multi-turn Conversations
+🔁 1) Multi-turn Conversations           
 Windows Walker now supports multi-turn interactions — meaning it can reason through a sequence of commands to accomplish complex tasks.           
 Example:         
 User: Open Oblivion from start menu          
@@ -41,7 +41,8 @@ You can also teach Walker custom facts like:
 “Please remember that AdiAI is present on my desktop”                
 
 ## 🎥 Video Demonstration
-[Watch The Video](https://www.youtube.com/watch?v=mcH4TlnGenQ)
+[Watch The Video](https://www.youtube.com/watch?v=mcH4TlnGenQ)          
+[Multi-Turn Conversation + Memory Demonstration](https://www.youtube.com/watch?v=Bih6vcDwiz8)
 
 ## 📜 License
 This project is licensed under a Non-Commercial MIT License.          
