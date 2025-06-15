@@ -27,6 +27,12 @@ ipcMain.handle('delete-memories', async () => {
   return { success: true };
 });
 
+// New handler to fetch all memories
+ipcMain.handle('get-memories', async () => {
+  const memories = memory.loadMemories();
+  return { memories };
+});
+
 ipcMain.handle('send-command', async (event, userInput) => {
   try {
     let memories = memory.loadMemories();
@@ -43,10 +49,6 @@ ipcMain.handle('send-command', async (event, userInput) => {
     ];
 
     const commandLog = [];
-
-    if (memories.length) {
-      commandLog.push({ command: 'MEMORY', output: '💾 Known memories:\n' + memories.join('\n') });
-    }
 
     let done = false;
     let cmd = "";
@@ -68,7 +70,7 @@ ipcMain.handle('send-command', async (event, userInput) => {
       });
 
       messages.push({ role: "system", content: output });
-      commandLog.push({ command: cmd, output });
+      commandLog.push({ command: cmd.replace("6969", ""), output });
 
       if (cmd.includes("6969")) {
         done = true;
@@ -99,7 +101,7 @@ ipcMain.handle('send-command', async (event, userInput) => {
       memories = Array.from(memSet);
       memory.saveMemories(memories);
       if (newUnique.length) {
-        commandLog.push({ command: 'MEMORY', output: '🆕 New memories:\n' + newUnique.join('\n') });
+        commandLog.push({ command: 'NEW MEMORY', output: '🆕 New memories:\n' + newUnique.join('\n') });
       }
     }
     //End memory extraction
