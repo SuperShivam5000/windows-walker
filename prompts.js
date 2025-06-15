@@ -30,7 +30,7 @@ function getKnownMemoriesPrompt(memories) {
 
 function createNewMemoriesPrompt(memories) {
     return `
-Current memories: ${JSON.stringify(memories)}\nExtract any new memories (URIs, process names, file paths, device names, etc) from this conversation. 
+Current memories: ${JSON.stringify(memories)}\nExtract any new memories (URIs, process names, file paths, device names, etc) from this conversation for future reference. 
 Do NOT repeat any of the above memories. Return as a JSON array of sentences, each describing a memory in the form: 'The <type> for <description> is <value>'. 
 If none, return []. Only return JSON.`;
 }

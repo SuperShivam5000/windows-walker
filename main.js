@@ -56,6 +56,7 @@ ipcMain.handle('send-command', async (event, userInput) => {
 
       if (cmd === "6969") {
         done = true;
+        break;
       }
 
       messages.push({ role: "assistant", content: cmd });
@@ -71,36 +72,38 @@ ipcMain.handle('send-command', async (event, userInput) => {
 
       if (cmd.includes("6969")) {
         done = true;
+        break;
       }
-
-      //Memory extraction step
-      const memoryExtractPrompt = [
-        ...messages,
-        { role: "system", content: prompts.createNewMemoriesPrompt(memories) }
-      ];
-      let newMems = [];
-      try {
-        const memResp = await assistant.getChatCompletion(memoryExtractPrompt);
-        newMems = JSON.parse(memResp);
-      } catch { }
-      if (Array.isArray(newMems) && newMems.length) {
-        const memSet = new Set(memories);
-        let newUnique = [];
-        for (const m of newMems) {
-          if (!memSet.has(m)) {
-            memSet.add(m);
-            newUnique.push(m);
-          }
-        }
-        memories = Array.from(memSet);
-        memory.saveMemories(memories);
-        if (newUnique.length) {
-          commandLog.push({ command: 'MEMORY', output: '🆕 New memories:\n' + newUnique.join('\n') });
-        }
-      }
-      //End memory extraction
 
     }
+
+    //Memory extraction step
+    const memoryExtractPrompt = [
+      ...messages,
+      { role: "system", content: prompts.createNewMemoriesPrompt(memories) }
+    ];
+    let newMems = [];
+    try {
+      const memResp = await assistant.getChatCompletion(memoryExtractPrompt);
+      newMems = JSON.parse(memResp);
+    } catch { }
+    if (Array.isArray(newMems) && newMems.length) {
+      const memSet = new Set(memories);
+      let newUnique = [];
+      for (const m of newMems) {
+        if (!memSet.has(m)) {
+          memSet.add(m);
+          newUnique.push(m);
+        }
+      }
+      memories = Array.from(memSet);
+      memory.saveMemories(memories);
+      if (newUnique.length) {
+        commandLog.push({ command: 'MEMORY', output: '🆕 New memories:\n' + newUnique.join('\n') });
+      }
+    }
+    //End memory extraction
+
     return { commandLog };
 
   } catch (err) {
