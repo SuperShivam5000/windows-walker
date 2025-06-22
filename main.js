@@ -28,7 +28,6 @@ ipcMain.handle('delete-memories', async () => {
   return { success: true };
 });
 
-// New handler to fetch all memories
 ipcMain.handle('get-memories', async () => {
   const memories = memory.loadMemories();
   return { memories };
@@ -115,6 +114,5 @@ ipcMain.handle('send-command', async (event, userInput) => {
 });
 
 ipcMain.on('invoke-dictation', () => {
-  // Simulate Windows+H to invoke dictation
   keySender.sendCombination(['windows', 'h']);
 });
