@@ -3,7 +3,7 @@ const path = require('path');
 const assistant = require('./assistant');
 const memory = require('./memory');
 const prompts = require('./prompts');
-const robot = require('robotjs'); // Replaced node-key-sender with robotjs
+const robot = require('robotjs'); 
 
 function createWindow() {
   const win = new BrowserWindow({
