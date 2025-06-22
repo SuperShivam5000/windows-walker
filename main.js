@@ -81,7 +81,6 @@ ipcMain.handle('send-command', async (event, userInput) => {
     }
 
     //Memory extraction step
-    console.log(messages);
     const memoryExtractPrompt = [
       ...messages,
       { role: "system", content: prompts.createNewMemoriesPrompt(memories) }
