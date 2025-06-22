@@ -51,6 +51,7 @@ No typing, no menus — just speak and command.
 ## 🎥 **Video Demonstrations**
 [Watch The Video](https://www.youtube.com/watch?v=mcH4TlnGenQ)          
 [Multi-Turn Conversation + Memory Demonstration](https://www.youtube.com/watch?v=Bih6vcDwiz8)
+[Voice Assistant | Multi-Turn & Memory Demonstration](https://www.youtube.com/watch?v=hljr4QPZgYU)
 
 ## 📜 **License**
 This project is licensed under a Non-Commercial MIT License.          
