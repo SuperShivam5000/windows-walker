@@ -22,7 +22,7 @@ Here’s the updated **🆕 New Features** section with your new entry for speec
 
 ## 🆕 **New Features**
 
-🔁 **1) Multi-turn Conversations**
+🔁 **1) Multi-turn Conversations**  
 Windows Walker now supports multi-turn interactions — meaning it can reason through a sequence of commands to accomplish complex tasks.
 Example:
 **User**: Open Oblivion from start menu
@@ -32,7 +32,7 @@ Example:
 * `Start-Process "shell:AppsFolder\BethesdaSoftworks.ProjectAltar_3275kfvn8vcwc!AppUEGameShipping"`
   Launches The Elder Scrolls IV: Oblivion Remastered.
 
-🧠 **2) Memory (Stateful Assistant)**
+🧠 **2) Memory (Stateful Assistant)**  
 Walker remembers useful context like AppIDs, file paths, URIs, process names, and more — for faster and smarter responses.
 Example:
 After launching Oblivion, Walker stores:
@@ -42,7 +42,7 @@ Next time you say "Open Oblivion", it knows exactly what to do.
 You can also teach it facts like:
 **“Please remember that AdiAI is present on my desktop”**
 
-🎙️ **3) One-Click Speech-to-Text Control**
+🎙️ **3) One-Click Speech-to-Text Control**  
 Walker now includes a **microphone button** for voice commands. Just click it, speak naturally, and Walker instantly converts your speech into text and executes the intended action.
 Example:
 Tap mic, say:
