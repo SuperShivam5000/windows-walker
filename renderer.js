@@ -1,7 +1,6 @@
 const { ipcRenderer } = require('electron');
 
 window.addEventListener('DOMContentLoaded', () => {
-  // Hide logs window on load
   document.getElementById("powershell-section").style.display = "none";
 
   const queryInput = document.getElementById("query");
@@ -12,11 +11,9 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Utility function to show spinner during async actions
   async function withSpinner(action) {
     const loadingSpinner = document.getElementById("loading-spinner");
     loadingSpinner.style.display = "flex";
-    // Hide logs window while loading
     document.getElementById("powershell-section").style.display = "none";
     try {
       await action();
@@ -25,7 +22,6 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Utility function to show/hide logs window based on message
   function showLogIfMessage(msg) {
     const psSection = document.getElementById("powershell-section");
     if (msg && msg.trim().length > 0) {
@@ -55,7 +51,6 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   };
 
-  // Show Memories button logic
   const showMemBtn = document.getElementById("show-memories");
   showMemBtn.addEventListener("click", async () => {
     const outputEl = document.getElementById("output");
@@ -90,29 +85,26 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Mic button logic
   const micBtn = document.getElementById("mic-btn");
   let sttTriggered = false;
   if (micBtn) {
     micBtn.addEventListener("click", () => {
-      // Focus the text field before invoking dictation
       const queryInput = document.getElementById("query");
       if (queryInput) {
-        queryInput.value = ""; // Clear previous value to ensure change event
+        queryInput.value = "";
         queryInput.focus();
       }
-      sttTriggered = true; // Set flag BEFORE dictation
+      sttTriggered = true;
       ipcRenderer.send("invoke-dictation");
     });
   }
 
-  // Auto-execute after 1s of inactivity following STT only
   const queryInput2 = document.getElementById("query");
   let debounceTimer = null;
   let lastValue = "";
   if (queryInput2) {
     queryInput2.addEventListener("input", function () {
-      if (!sttTriggered) return; // Only auto-execute if triggered by mic
+      if (!sttTriggered) return;
       if (debounceTimer) clearTimeout(debounceTimer);
       if (queryInput2.value && queryInput2.value !== lastValue) {
         debounceTimer = setTimeout(() => {
