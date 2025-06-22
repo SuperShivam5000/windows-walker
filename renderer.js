@@ -103,8 +103,12 @@ window.addEventListener('DOMContentLoaded', () => {
   let debounceTimer = null;
   let lastValue = "";
   if (queryInput2) {
-    queryInput2.addEventListener("input", function () {
+    queryInput2.addEventListener("input", function (e) {
       if (!sttTriggered) return;
+      if (e.inputType === "insertText") {
+        sttTriggered = false;
+        return;
+      }
       if (debounceTimer) clearTimeout(debounceTimer);
       if (queryInput2.value && queryInput2.value !== lastValue) {
         debounceTimer = setTimeout(() => {
