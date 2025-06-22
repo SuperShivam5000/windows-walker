@@ -3,6 +3,7 @@ const path = require('path');
 const assistant = require('./assistant');
 const memory = require('./memory');
 const prompts = require('./prompts');
+const keySender = require('node-key-sender');
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -111,4 +112,9 @@ ipcMain.handle('send-command', async (event, userInput) => {
   } catch (err) {
     return { error: err.message };
   }
+});
+
+ipcMain.on('invoke-dictation', () => {
+  // Simulate Windows+H to invoke dictation
+  keySender.sendCombination(['windows', 'h']);
 });

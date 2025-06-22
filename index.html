@@ -144,6 +144,32 @@
       border-radius: 50%;
       padding: 4px;
     }
+
+    #mic-btn {
+      position: fixed;
+      bottom: 116px;
+      right: 24px;
+      background-color: #007acc;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      z-index: 1000;
+      margin: 0;
+      padding: 0;
+      transition: background 0.2s;
+    }
+
+    #mic-btn:hover {
+      background-color: #005fa3;
+    }
   </style>
 </head>
 
@@ -156,6 +182,7 @@
   <button onclick="sendCommand()">Run</button>
   <button id="show-memories">📚</button>
   <button id="delete-memories">🗑️</button>
+  <button id="mic-btn" title="Dictate (Win+H)">🎤</button>
   <div id="loading-spinner"
     style="display:none; position: fixed; bottom: 24px; left: 24px; justify-content:center; align-items:center; height:32px; width:32px; z-index: 2000; background: rgba(30,30,30,0.7); border-radius: 50%; padding: 4px;">
     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">

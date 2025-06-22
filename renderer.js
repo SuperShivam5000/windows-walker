@@ -89,4 +89,40 @@ window.addEventListener('DOMContentLoaded', () => {
       showLogIfMessage(logMsg);
     });
   });
+
+  // Mic button logic
+  const micBtn = document.getElementById("mic-btn");
+  let sttTriggered = false;
+  if (micBtn) {
+    micBtn.addEventListener("click", () => {
+      // Focus the text field before invoking dictation
+      const queryInput = document.getElementById("query");
+      if (queryInput) {
+        queryInput.value = ""; // Clear previous value to ensure change event
+        queryInput.focus();
+      }
+      sttTriggered = true; // Set flag BEFORE dictation
+      ipcRenderer.send("invoke-dictation");
+    });
+  }
+
+  // Auto-execute after 1s of inactivity following STT only
+  const queryInput2 = document.getElementById("query");
+  let debounceTimer = null;
+  let lastValue = "";
+  if (queryInput2) {
+    queryInput2.addEventListener("input", function () {
+      if (!sttTriggered) return; // Only auto-execute if triggered by mic
+      if (debounceTimer) clearTimeout(debounceTimer);
+      if (queryInput2.value && queryInput2.value !== lastValue) {
+        debounceTimer = setTimeout(() => {
+          if (queryInput2.value === lastValue && queryInput2.value.trim() !== "") {
+            sttTriggered = false;
+            window.sendCommand();
+          }
+        }, 1000);
+        lastValue = queryInput2.value;
+      }
+    });
+  }
 });
