@@ -3,7 +3,7 @@ const path = require('path');
 const assistant = require('./assistant');
 const memory = require('./memory');
 const prompts = require('./prompts');
-const keySender = require('node-key-sender');
+const robot = require('robotjs'); // Replaced node-key-sender with robotjs
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -115,9 +115,11 @@ ipcMain.handle('send-command', async (event, userInput) => {
 });
 
 ipcMain.on('invoke-dictation', () => {
-  keySender.sendCombination(['windows', 'h']);
+  robot.keyToggle('command', 'down');
+  robot.keyTap('h');
+  robot.keyToggle('command', 'up');
 });
 
 ipcMain.on('close-dictation', () => {
-  keySender.sendKey('escape');
+  robot.keyTap('escape');
 });
