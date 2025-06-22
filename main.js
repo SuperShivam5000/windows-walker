@@ -87,6 +87,7 @@ ipcMain.handle('send-command', async (event, userInput) => {
     let newMems = [];
     try {
       const memResp = await assistant.getChatCompletion(memoryExtractPrompt);
+      console.log(memResp);
       newMems = JSON.parse(memResp);
     } catch { }
     if (Array.isArray(newMems) && newMems.length) {
@@ -105,7 +106,7 @@ ipcMain.handle('send-command', async (event, userInput) => {
       }
     }
     //End memory extraction
-
+    console.log(messages);
     return { commandLog };
 
   } catch (err) {
@@ -115,4 +116,8 @@ ipcMain.handle('send-command', async (event, userInput) => {
 
 ipcMain.on('invoke-dictation', () => {
   keySender.sendCombination(['windows', 'h']);
+});
+
+ipcMain.on('close-dictation', () => {
+  keySender.sendKey('escape');
 });

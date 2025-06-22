@@ -111,6 +111,7 @@ window.addEventListener('DOMContentLoaded', () => {
           if (queryInput2.value === lastValue && queryInput2.value.trim() !== "") {
             sttTriggered = false;
             window.sendCommand();
+            ipcRenderer.send("close-dictation");
           }
         }, 1000);
         lastValue = queryInput2.value;
