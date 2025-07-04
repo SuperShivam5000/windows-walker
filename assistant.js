@@ -10,7 +10,8 @@ async function getChatCompletion(messages) {
     },
     body: JSON.stringify({
       "model": "openai-large",
-      "messages": messages
+      "messages": messages,
+      "referrer": "windowswalker"
     }),
   });
 
